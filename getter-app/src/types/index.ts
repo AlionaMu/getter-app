@@ -15,4 +15,9 @@ export type LogsItemType = {
 export type ButtonPropsType = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>
+  setData: Dispatch<SetStateAction<any>>
+}
+
+export type DataPropsType = {
+  data: any;
 }
