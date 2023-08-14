@@ -1,0 +1,1 @@
+export const url: string = 'http://192.168.0.201:9101/getlist';

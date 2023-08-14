@@ -1,6 +1,8 @@
+import { url } from "../constants/constants"
+
 export default class FetchService {
   static async getPosts() {
-    const response = await fetch(`http://192.168.0.201:9101/getlist`, {
+    const response = await fetch(url, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
