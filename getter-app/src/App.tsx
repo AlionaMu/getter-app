@@ -1,21 +1,27 @@
 import { useState } from 'react';
 import './App.css';
-import DataList from './components/DataList';
-import ButtonComponent from './components/Button';
-import { Collapse } from '@mui/material';
+import { CustomizedMenus } from './components/Menu';
+import InfoBoxComponent from './components/InfoBox';
+
 
 function App() {
   const [open, setOpen] = useState(false);
-  const [data, setData] = useState('no data');
+  const [data, setData] = useState<any | null>(null);
+  const [itemId, setItemId] = useState<string>('')
+
   return (
     <div className="App">
       <header className="header">
         GETTER APP
       </header>
-      <ButtonComponent open={open} setOpen={setOpen} setData={setData}></ButtonComponent>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <DataList data={data} ></DataList>
-      </Collapse>
+      <main className='main'>
+      <CustomizedMenus 
+        setItemId={setItemId}
+        open={open} 
+        setOpen={setOpen} 
+        data={data} setData={setData}></CustomizedMenus>
+      <InfoBoxComponent itemId={itemId}></InfoBoxComponent>
+      </main>
     </div>
   );
 }

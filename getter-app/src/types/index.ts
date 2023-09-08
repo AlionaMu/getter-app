@@ -6,11 +6,10 @@ export type DataItemType = {
   desc: string;
 };
 
-export type LogsItemType = {
-  id: string;
-  name: string;
-  desc: string;
-};
+export type DataType = {
+  items: DataItemType[];
+  selectedId: string;
+}
 
 export type ButtonPropsType = {
   open: boolean;
@@ -18,6 +17,14 @@ export type ButtonPropsType = {
   setData: Dispatch<SetStateAction<any>>
 }
 
-export type DataPropsType = {
+export type MenuPropsType = {
   data: any;
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>
+  setData: Dispatch<SetStateAction<any>>
+  setItemId: Dispatch<SetStateAction<string>>
+}
+
+export type InfoBoxPropsType = {
+  itemId: string;
 }

@@ -1,4 +1,4 @@
-import { url } from "../constants/constants"
+import { url, urlWithId } from "../constants/constants";
 
 export default class FetchService {
   static async getPosts() {
@@ -9,6 +9,16 @@ export default class FetchService {
         'Content-Type': 'application/json',
       },
     })
-    return response.json()
-  }
+    return await response.json()
+  };
+  static async getById(input: string) {
+    const response = await fetch(`${urlWithId}${input}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+    return response.json();
+  };
 }
