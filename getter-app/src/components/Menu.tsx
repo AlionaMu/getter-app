@@ -53,6 +53,7 @@ export const StyledMenu = styled((props: MenuProps) => (
 
 export const CustomizedMenus = (props: MenuPropsType) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [info, setInfo] = useState<string>('');
   const open = Boolean(anchorEl);
 
   const openButtonHandler = (event: React.MouseEvent<HTMLElement>) => {
@@ -66,8 +67,9 @@ export const CustomizedMenus = (props: MenuPropsType) => {
     setAnchorEl(null);
   };
 
-  const itemClickHandler = (id: string) => {
+  const itemClickHandler = (id: string, desc: string) => {
     props.setItemId(id);
+    setInfo(desc)
     handleClose();
   }
 
@@ -84,7 +86,7 @@ export const CustomizedMenus = (props: MenuPropsType) => {
         onClick={openButtonHandler}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        {menuInfo}
+        {info ? info : menuInfo}
       </Button>
       <StyledMenu
         id="demo-customized-menu"
@@ -94,7 +96,7 @@ export const CustomizedMenus = (props: MenuPropsType) => {
       >
         { props.data ? 
           props.data.map((item: any) => (
-            <MenuItem onClick={() => itemClickHandler(item.id)} disableRipple key={item.desc + Math.random()}>
+            <MenuItem onClick={() => itemClickHandler(item.id, item.desc)} disableRipple key={item.desc + Math.random()}>
               {item.desc}
             </MenuItem>)) :
           'no data'}
