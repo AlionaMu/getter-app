@@ -1,11 +1,11 @@
-import { url, urlWithId } from "../constants/constants";
+import { url, urlWithHtmlData, urlWithId } from "../constants/constants";
 
 export default class FetchService {
   static async getPosts() {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        Accept: 'application/json',
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
     })
@@ -20,5 +20,14 @@ export default class FetchService {
       }
     });
     return response.json();
+  };
+  static async getHtmlData() {
+    const response = await fetch(urlWithHtmlData, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+      }
+    });
+    return response.text();
   };
 }

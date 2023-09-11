@@ -28,3 +28,9 @@ export type MenuPropsType = {
 export type InfoBoxPropsType = {
   itemId: string;
 }
+
+export type Info = {
+  id: number;
+  status: string;
+  statusurl: string;
+}
